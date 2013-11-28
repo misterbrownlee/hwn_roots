@@ -1,14 +1,14 @@
 {
-  "name": "roots",
-  "version": "6.5.1",
-  "author": "Ben Word <ben@benword.com>",
-  "homepage": "http://roots.io",
+  "name": "hwn_roots",
+  "version": "0.0.1",
+  "author": "Aaron Brownlee <eljefe@tehfoo.com>",
+  "homepage": "http://github.com/tehfoo/hwn_roots",
   "repository": {
     "type": "git",
-    "url": "git://github.com/roots/roots.git"
+    "url": "git://github.com/tehfoo/hwn_roots.git"
   },
   "bugs": {
-    "url" : "https://github.com/roots/roots/issues"
+    "url" : "https://github.com/tehfoo/hwn_roots/issues"
   },
   "licenses": [{
     "type": "MIT",
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4.1",
+    "grunt-contrib-copy": "~0.4.0",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-uglify": "~0.2.4",

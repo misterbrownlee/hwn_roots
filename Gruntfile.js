@@ -1,7 +1,15 @@
 'use strict';
 module.exports = function(grunt) {
 
+ var dirs = {
+      output: '/Users/brownlee/Documents/code/tehfoo/test_press'
+  };
+
   grunt.initConfig({
+
+    pkg: grunt.file.readJSON('package.json'),
+    dirs: dirs,
+
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -98,10 +106,48 @@ module.exports = function(grunt) {
         'assets/css/main.min.css',
         'assets/js/scripts.min.js'
       ]
-    }
+    },
+    copy: {
+      // deploy: {
+        php: {
+          files: [{
+            expand: true,
+            cwd: '',
+            src: ['*.php', 'lib/**/*.php', 'templates/**/*.php'],
+            dest: '<%=dirs.output%>/wp-content/themes/<%=pkg.name%>'
+          }]
+        },
+        assets: {
+          files: [{
+            expand: true,
+            cwd: '',
+            src: ['assets/**/*'],
+            dest: '<%=dirs.output%>/wp-content/themes/<%=pkg.name%>'
+          }]
+        },
+        i18n: {
+          files: [{
+            expand: true,
+            cwd: '',
+            src: 'lang/**',
+            dest: '<%=dirs.output%>/wp-content/themes/<%=pkg.name%>'
+          }]
+        },
+        other: {
+          files: [{
+            expand: true,
+            cwd: '',
+            src: ['screenshot.png', 'style.css'],
+            dest: '<%=dirs.output%>/wp-content/themes/<%=pkg.name%>'
+          }]
+        } // /other
+      //} // /deploy
+    } // /copy
+
   });
 
   // Load tasks
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -119,5 +165,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', [
     'watch'
   ]);
+
+  grunt.registerTask('deploy', ['copy:deploy']);
 
 };
