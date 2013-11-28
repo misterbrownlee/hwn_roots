@@ -108,40 +108,38 @@ module.exports = function(grunt) {
       ]
     },
     copy: {
-      // deploy: {
-        php: {
-          files: [{
-            expand: true,
-            cwd: '',
-            src: ['*.php', 'lib/**/*.php', 'templates/**/*.php'],
-            dest: '<%=dirs.output%>/wp-content/themes/<%=pkg.name%>'
-          }]
-        },
-        assets: {
-          files: [{
-            expand: true,
-            cwd: '',
-            src: ['assets/**/*'],
-            dest: '<%=dirs.output%>/wp-content/themes/<%=pkg.name%>'
-          }]
-        },
-        i18n: {
-          files: [{
-            expand: true,
-            cwd: '',
-            src: 'lang/**',
-            dest: '<%=dirs.output%>/wp-content/themes/<%=pkg.name%>'
-          }]
-        },
-        other: {
-          files: [{
-            expand: true,
-            cwd: '',
-            src: ['screenshot.png', 'style.css'],
-            dest: '<%=dirs.output%>/wp-content/themes/<%=pkg.name%>'
-          }]
-        } // /other
-      //} // /deploy
+      php: {
+        files: [{
+          expand: true,
+          cwd: '',
+          src: ['*.php', 'lib/**/*.php', 'templates/**/*.php'],
+          dest: '<%=dirs.output%>/wp-content/themes/<%=pkg.name%>'
+        }]
+      },
+      assets: {
+        files: [{
+          expand: true,
+          cwd: '',
+          src: ['assets/**/*'],
+          dest: '<%=dirs.output%>/wp-content/themes/<%=pkg.name%>'
+        }]
+      },
+      i18n: {
+        files: [{
+          expand: true,
+          cwd: '',
+          src: 'lang/**',
+          dest: '<%=dirs.output%>/wp-content/themes/<%=pkg.name%>'
+        }]
+      },
+      other: {
+        files: [{
+          expand: true,
+          cwd: '',
+          src: ['screenshot.png', 'style.css'],
+          dest: '<%=dirs.output%>/wp-content/themes/<%=pkg.name%>'
+        }]
+      } // /other
     } // /copy
 
   });
