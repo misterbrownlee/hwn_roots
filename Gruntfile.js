@@ -1,5 +1,5 @@
-'use strict';
 module.exports = function(grunt) {
+'use strict';
 
  var dirs = {
       output: '/Users/brownlee/Documents/code/tehfoo/test_press'
@@ -80,6 +80,7 @@ module.exports = function(grunt) {
           'assets/less/bootstrap/*.less'
         ],
         tasks: ['less', 'version']
+        // note that version will trigger deploy
       },
       js: {
         files: [
@@ -87,19 +88,23 @@ module.exports = function(grunt) {
         ],
         tasks: ['jshint', 'uglify', 'version']
       },
-      livereload: {
-        // Browser live reloading
-        // https://github.com/gruntjs/grunt-contrib-watch#live-reloading
-        options: {
-          livereload: false
-        },
-        files: [
-          'assets/css/main.min.css',
-          'assets/js/scripts.min.js',
-          'templates/*.php',
-          '*.php'
-        ]
+      php: {
+        files: ['*.php', 'lib/**/*.php', 'templates/**/*.php'],
+        tasks: ['deploy']
       }
+      // livereload: {
+      //   // Browser live reloading
+      //   // https://github.com/gruntjs/grunt-contrib-watch#live-reloading
+      //   options: {
+      //     livereload: false
+      //   },
+      //   files: [
+      //     'assets/css/main.min.css',
+      //     'assets/js/scripts.min.js',
+      //     'templates/*.php',
+      //     '*.php'
+      //   ]
+      // }
     },
     clean: {
       dist: [
@@ -158,12 +163,13 @@ module.exports = function(grunt) {
     'clean',
     'less',
     'uglify',
-    'version'
+    'version',
+    'deploy'
   ]);
   grunt.registerTask('dev', [
     'watch'
   ]);
 
-  grunt.registerTask('deploy', ['copy:deploy']);
+  grunt.registerTask('deploy', ['copy']);
 
 };
